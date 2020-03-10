@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Desafio 3 - Android</string>
+    <string name="btn_send">ENVOYER</string>
+    <string name="dificultad">Difficulté</string>
+    <string name="categoria">Catégorie</string>
+    <string name="pregunta">Question</string>
+</resources>
