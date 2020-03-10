@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Desafio 3 - Android</string>
+    <string name="btn_send">ENVIAR</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="categoria">Categoría</string>
+    <string name="pregunta">Pregunta</string>
 </resources>
