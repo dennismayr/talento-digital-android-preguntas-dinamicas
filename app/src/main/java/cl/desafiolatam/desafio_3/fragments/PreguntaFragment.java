@@ -29,6 +29,7 @@ public class PreguntaFragment extends Fragment {
                                                String respuestaCorrecta,
                                                ArrayList<String> respuestasIncorrectas) {
         PreguntaFragment fragment = new PreguntaFragment();
+
         Bundle arguments = new Bundle();
         arguments.putString("PREGUNTA", pregunta);
         arguments.putString("CATEGORIA", categoria);
@@ -44,8 +45,8 @@ public class PreguntaFragment extends Fragment {
         categoriaView = view.findViewById(R.id.categoria);
         dificultadView = view.findViewById(R.id.dificultad);
         grupoRespuestasView = view.findViewById(R.id.radioGrupoRespuestas);
-        respuestaUno = view.findViewById(R.id.radioRespuestaUno);
-        respuestaDos = view.findViewById(R.id.radioRespuestaDos);
+        respuestaUno = view.findViewById(R.id.respuestaTrue);
+        respuestaDos = view.findViewById(R.id.respuestaFalse);
     }
 
     @Override
@@ -65,12 +66,10 @@ public class PreguntaFragment extends Fragment {
         categoriaView.setText(categoria);
         dificultadView.setText(dificultad);
 
-
         respuestaUno.setText(respuestasIncorrectas.get(0));
-
-
-        respuestaDos = view.findViewById(R.id.radioRespuestaDos);
+        respuestaDos = view.findViewById(R.id.respuestaFalse);
         respuestaDos.setText(respuestaCorrecta);
+
         grupoRespuestasView.setOnCheckedChangeListener((group, checkedId) -> {
             if (respuestaUno.isChecked()) {
                 radioButtonValue = 1;
@@ -78,7 +77,7 @@ public class PreguntaFragment extends Fragment {
                 radioButtonValue = 2;
             }
         });
+
         return view;
     }
-
 }
