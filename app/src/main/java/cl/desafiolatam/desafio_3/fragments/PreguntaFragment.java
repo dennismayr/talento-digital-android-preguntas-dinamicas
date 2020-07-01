@@ -18,66 +18,66 @@ import java.util.Objects;
 import cl.desafiolatam.desafio_3.R;
 
 public class PreguntaFragment extends Fragment {
-    private int radioButtonValue = 0;
-    private TextView preguntaView, categoriaView, dificultadView;
-    private RadioGroup grupoRespuestasView;
-    private RadioButton respuestaUno, respuestaDos;
+  private int radioButtonValue = 0;
+  private TextView preguntaView, categoriaView, dificultadView;
+  private RadioGroup grupoRespuestasView;
+  private RadioButton respuestaUno, respuestaDos;
 
-    public static PreguntaFragment newInstance(String pregunta,
-                                               String categoria,
-                                               String dificultad,
-                                               String respuestaCorrecta,
-                                               ArrayList<String> respuestasIncorrectas) {
-        PreguntaFragment fragment = new PreguntaFragment();
+  public static PreguntaFragment newInstance(String pregunta,
+                                             String categoria,
+                                             String dificultad,
+                                             String respuestaCorrecta,
+                                             ArrayList<String> respuestasIncorrectas) {
+    PreguntaFragment fragment = new PreguntaFragment();
 
-        Bundle arguments = new Bundle();
-        arguments.putString("PREGUNTA", pregunta);
-        arguments.putString("CATEGORIA", categoria);
-        arguments.putString("DIFICULTAD", dificultad);
-        arguments.putString("RESPUESTA_CORRECTA", respuestaCorrecta);
-        arguments.putStringArrayList("RESPUESTAS_INCORRECTAS", respuestasIncorrectas);
-        fragment.setArguments(arguments);
-        return fragment;
-    }
+    Bundle arguments = new Bundle();
+    arguments.putString("PREGUNTA", pregunta);
+    arguments.putString("CATEGORIA", categoria);
+    arguments.putString("DIFICULTAD", dificultad);
+    arguments.putString("RESPUESTA_CORRECTA", respuestaCorrecta);
+    arguments.putStringArrayList("RESPUESTAS_INCORRECTAS", respuestasIncorrectas);
+    fragment.setArguments(arguments);
+    return fragment;
+  }
 
-    private void initializeViews(View view) {
-        preguntaView = view.findViewById(R.id.pregunta);
-        categoriaView = view.findViewById(R.id.categoria);
-        dificultadView = view.findViewById(R.id.dificultad);
-        grupoRespuestasView = view.findViewById(R.id.radioGrupoRespuestas);
-        respuestaUno = view.findViewById(R.id.respuestaTrue);
-        respuestaDos = view.findViewById(R.id.respuestaFalse);
-    }
+  private void initializeViews(View view) {
+    preguntaView = view.findViewById(R.id.pregunta);
+    categoriaView = view.findViewById(R.id.categoria);
+    dificultadView = view.findViewById(R.id.dificultad);
+    grupoRespuestasView = view.findViewById(R.id.radioGrupoRespuestas);
+    respuestaUno = view.findViewById(R.id.respuestaTrue);
+    respuestaDos = view.findViewById(R.id.respuestaFalse);
+  }
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
-            Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pregunta, container, false);
-        final String pregunta = Objects.requireNonNull(getArguments()).getString("PREGUNTA");
-        final String categoria = Objects.requireNonNull(getArguments().getString("CATEGORIA"));
-        final String dificultad = Objects.requireNonNull(getArguments().getString("DIFICULTAD"));
-        final String respuestaCorrecta =
-                Objects.requireNonNull(getArguments().getString("RESPUESTA_CORRECTA"));
-        final ArrayList<String> respuestasIncorrectas = Objects.requireNonNull(getArguments().getStringArrayList("RESPUESTAS_INCORRECTAS"));
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+      Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_pregunta, container, false);
+    final String pregunta = Objects.requireNonNull(getArguments()).getString("PREGUNTA");
+    final String categoria = Objects.requireNonNull(getArguments().getString("CATEGORIA"));
+    final String dificultad = Objects.requireNonNull(getArguments().getString("DIFICULTAD"));
+    final String respuestaCorrecta =
+        Objects.requireNonNull(getArguments().getString("RESPUESTA_CORRECTA"));
+    final ArrayList<String> respuestasIncorrectas = Objects.requireNonNull(getArguments().getStringArrayList("RESPUESTAS_INCORRECTAS"));
 
-        initializeViews(view);
+    initializeViews(view);
 
-        preguntaView.setText(pregunta);
-        categoriaView.setText(categoria);
-        dificultadView.setText(dificultad);
+    preguntaView.setText(pregunta);
+    categoriaView.setText(categoria);
+    dificultadView.setText(dificultad);
 
-        respuestaUno.setText(respuestasIncorrectas.get(0));
-        respuestaDos = view.findViewById(R.id.respuestaFalse);
-        respuestaDos.setText(respuestaCorrecta);
+    respuestaUno.setText(respuestasIncorrectas.get(0));
+    respuestaDos = view.findViewById(R.id.respuestaFalse);
+    respuestaDos.setText(respuestaCorrecta);
 
-        grupoRespuestasView.setOnCheckedChangeListener((group, checkedId) -> {
-            if (respuestaUno.isChecked()) {
-                radioButtonValue = 1;
-            } else if (respuestaDos.isChecked()) {
-                radioButtonValue = 2;
-            }
-        });
+    grupoRespuestasView.setOnCheckedChangeListener((group, checkedId) -> {
+      if (respuestaUno.isChecked()) {
+        radioButtonValue = 1;
+      } else if (respuestaDos.isChecked()) {
+        radioButtonValue = 2;
+      }
+    });
 
-        return view;
-    }
+    return view;
+  }
 }

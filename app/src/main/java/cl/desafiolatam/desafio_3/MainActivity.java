@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
                     Pregunta pregunta;
                     pregunta = preguntas.getResults().get(0);
                     PreguntaFragment preguntaFragment = PreguntaFragment
-                            .newInstance(
-                                    pregunta.getQuestion(),
-                                    pregunta.getCategory(),
-                                    pregunta.getDifficulty(),
-                                    pregunta.getCorrect_answer(),
-                                    pregunta.getIncorrect_answers()
-                            );
+                        .newInstance(
+                            pregunta.getQuestion(),
+                            pregunta.getCategory(),
+                            pregunta.getDifficulty(),
+                            pregunta.getCorrect_answer(),
+                            pregunta.getIncorrect_answers()
+                        );
                     getSupportFragmentManager().beginTransaction()
-                            .add(R.id.contFragmento, preguntaFragment, "FRAGMENTO").commit();
+                        .add(R.id.contFragmento, preguntaFragment, "FRAGMENTO").commit();
                 }
             }
 
